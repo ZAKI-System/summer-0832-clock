@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Clock</title>
+</head>
+<body>
+  <div id="clock"></div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1;
+      let day = now.getDate();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      if (month === 9 && day === 1) {
+        month = 8; // September is converted to August
+        day = 32;  // 32nd day for special case
+      }
+
+      const formattedTime = `${year}/${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')} ${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = formattedTime;
+    }
+
+    updateClock(); // Initial call to set the clock immediately
+
+    setInterval(updateClock, 100); // Update the clock every 100ms
+  </script>
+</body>
+</html>

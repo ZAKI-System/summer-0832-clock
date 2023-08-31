@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer-0832 Live Clock assisted by ChatGPT</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const clock = document.getElementById("clock");
+
+            const updateClock = () => {
+                const now = new Date();
+                let year = now.getFullYear();
+                let month = now.getMonth() + 1;
+                let day = now.getDate();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+
+                if (month === 9 && day === 1) {
+                    month = 8; // September is converted to August
+                    day = 32;  // 32nd day for special case
+                }
+
+                const formattedTime = `${year}/${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')} ${hours}:${minutes}:${seconds}`;
+                clock.textContent = formattedTime;
+            };
+
+            updateClock(); // Initial call to set the clock immediately
+
+            setInterval(updateClock, 100); // Update the clock every 100ms
+        });
+    </script>
+    <style>
+        /* ダークモードに対応するスタイル */
+        body {
+            background-color: white; /* ライトモードの背景色 */
+            color: black; /* ライトモードのテキスト色 */
+        }
+
+        /* メディアクエリを使用してダークモードを検出 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #191919; /* ダークモードの背景色 */
+                color: white; /* ダークモードのテキスト色 */
+            }
+            a:link {
+                color: lightblue;
+            }
+            a:visited {
+                color: lightcoral;
+            }
+        }
+
+        #clock {
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+    <h1>Summer-0832 Live Clock</h1>
+    <p>assisted by ChatGPT</p>
+    <div>
+        <div id="clock"></div>
+    </div>
+    <div>
+        <p>ChatGPTの生産物</p>
+        <ul>
+            <li><a href="gpt3.5-suggested-1.html">GPT3.5-HTML1</a></li>
+            <li><a href="gpt3.5-suggested-2.html">GPT3.5-HTML2</a></li>
+            <li><a href="gpt3.5-suggested-1.css">GPT3.5-CSS1</a></li>
+        </ul>
+    </div>
+    <div>
+        <span>2023 ZAKI System</span>
+    </div>
+</body>
+</html>

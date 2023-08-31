@@ -1,0 +1,14 @@
+/* ダークモードに対応するスタイル */
+body {
+    background-color: white; /* ライトモードの背景色 */
+    color: black; /* ライトモードのテキスト色 */
+  }
+  
+  /* メディアクエリを使用してダークモードを検出 */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: black; /* ダークモードの背景色 */
+      color: white; /* ダークモードのテキスト色 */
+    }
+  }
+  
